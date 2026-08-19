@@ -9,8 +9,8 @@ from streamlit_folium import st_folium
 # =========================================================
 
 st.set_page_config(
-    page_title="EcoSim AI | Karachi Climate Lab",
-    page_icon="🌍",
+    page_title="EcoSim AI | Karachi Climate Simulator",
+    page_icon="🌱",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -29,141 +29,179 @@ html, body, [class*="css"] {
 }
 
 .stApp {
-    background: #f4f8f5;
+    background: #F7FAF8;
+    color: #17352A;
 }
 
 .block-container {
-    max-width: 1400px;
-    padding-top: 2rem;
-    padding-bottom: 3rem;
+    max-width: 1450px;
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
 }
 
-/* HERO */
+/* ================= HEADER ================= */
 
 .hero {
     background: linear-gradient(
         135deg,
-        #063b2a 0%,
-        #087044 55%,
-        #18a567 100%
+        #E7F5EC 0%,
+        #F4FAF6 55%,
+        #EAF4F7 100%
     );
 
-    padding: 38px;
-    border-radius: 25px;
-    color: white;
-    margin-bottom: 25px;
+    border: 1px solid #D5E9DC;
+    border-radius: 22px;
 
-    box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+    padding: 28px 32px;
+    margin-bottom: 22px;
+
+    box-shadow: 0 8px 25px rgba(30, 80, 55, 0.06);
 }
 
-.hero h1 {
-    font-size: 44px;
+.hero-title {
+    font-size: 42px;
     font-weight: 800;
-    margin: 0;
+    color: #123D2C;
+    margin-bottom: 2px;
 }
 
-.hero p {
+.hero-subtitle {
+    color: #557267;
     font-size: 16px;
-    opacity: 0.9;
-    margin-top: 8px;
 }
 
-.badge {
+.hero-badge {
     display: inline-block;
-    padding: 6px 14px;
-    border-radius: 50px;
-    background: rgba(255,255,255,0.15);
+    background: #D8F1DF;
+    color: #187344;
+    padding: 6px 13px;
+    border-radius: 20px;
     font-size: 12px;
     font-weight: 700;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
-/* SECTION */
-
-.section-title {
-    color: #063b2a;
-    font-size: 25px;
-    font-weight: 800;
-    margin-top: 30px;
-    margin-bottom: 15px;
-}
-
-/* CARDS */
+/* ================= CARDS ================= */
 
 .card {
-    background: white;
-    border-radius: 18px;
-    padding: 22px;
-
-    border: 1px solid #dfe9e3;
-
-    box-shadow:
-        0 5px 20px rgba(0,0,0,0.05);
+    background: #FFFFFF;
+    border: 1px solid #DFEAE3;
+    border-radius: 17px;
+    padding: 20px;
+    box-shadow: 0 5px 20px rgba(25, 70, 50, 0.05);
+    height: 100%;
 }
 
-.metric-title {
-    color: #66766e;
+.metric-label {
+    color: #708279;
     font-size: 13px;
     font-weight: 600;
 }
 
 .metric-value {
-    color: #063b2a;
+    color: #176B42;
     font-size: 28px;
     font-weight: 800;
-    margin-top: 5px;
+    margin-top: 6px;
 }
 
-.metric-delta {
-    color: #11945b;
+.metric-small {
+    color: #71857B;
     font-size: 12px;
-    font-weight: 700;
     margin-top: 4px;
 }
 
-/* INFO */
+/* ================= SECTION ================= */
+
+.section-title {
+    color: #173D2E;
+    font-size: 22px;
+    font-weight: 750;
+    margin-top: 25px;
+    margin-bottom: 12px;
+}
+
+/* ================= INSIGHTS ================= */
+
+.insight-card {
+    background: #F0F8F2;
+    border: 1px solid #D7ECDD;
+    border-radius: 17px;
+    padding: 22px;
+}
+
+.insight-title {
+    color: #176B42;
+    font-size: 18px;
+    font-weight: 750;
+}
+
+.insight-text {
+    color: #50665C;
+    line-height: 1.65;
+    font-size: 14px;
+}
+
+/* ================= INFO ================= */
 
 .info-box {
-    background: #e7f5ed;
-    border-left: 5px solid #11945b;
-
-    padding: 15px 18px;
-
-    border-radius: 12px;
-
-    color: #214d3b;
-
+    background: #EEF7FA;
+    border: 1px solid #D6E9EF;
+    border-radius: 13px;
+    padding: 13px 17px;
+    color: #41606A;
     font-size: 13px;
 }
 
-/* SIDEBAR */
+/* ================= SIDEBAR ================= */
 
 section[data-testid="stSidebar"] {
-    background: #063b2a;
+    background: #F1F7F3;
+    border-right: 1px solid #DCE9E0;
 }
 
-section[data-testid="stSidebar"] * {
-    color: white !important;
+section[data-testid="stSidebar"] h2,
+section[data-testid="stSidebar"] h3 {
+    color: #176B42 !important;
 }
 
-/* BUTTON */
+section[data-testid="stSidebar"] label {
+    color: #345448 !important;
+    font-weight: 600 !important;
+}
+
+/* ================= BUTTON ================= */
 
 .stButton > button {
-    border-radius: 12px;
+    width: 100%;
+    border-radius: 11px;
+    border: none;
+    background: #249B5A;
+    color: white;
     font-weight: 700;
+    padding: 0.65rem 1rem;
 }
 
-/* FOOTER */
+.stButton > button:hover {
+    background: #1C824A;
+}
+
+/* ================= FOOTER ================= */
 
 .footer {
     text-align: center;
-    color: #718078;
+    color: #7B8C84;
     font-size: 12px;
-    padding: 20px;
+    padding: 25px 0 10px 0;
+}
+
+.footer strong {
+    color: #176B42;
 }
 
 </style>
 """, unsafe_allow_html=True)
+
 
 # =========================================================
 # BASELINE DATA
@@ -176,7 +214,6 @@ KARACHI_AREA = 5841.13
 BUILDINGS = 128285
 PARKS = 1148
 PARK_AREA = 9.04
-
 WATER_BODIES = 279
 WATER_AREA = 252.32
 
@@ -185,8 +222,6 @@ WATER_AREA = 252.32
 # =========================================================
 
 SURVIVAL_RATE = 0.80
-
-# canopy generated by surviving trees
 CANOPY_PER_TREE = 0.00002
 
 
@@ -197,29 +232,22 @@ CANOPY_PER_TREE = 0.00002
 def estimate_cooling(canopy_increase):
 
     if canopy_increase <= 0:
-
         return 0
 
     elif canopy_increase <= 10:
-
         return 0.8 * (canopy_increase / 10)
 
     elif canopy_increase <= 20:
-
         return 0.8 + (
-            0.3 *
-            ((canopy_increase - 10) / 10)
+            0.3 * ((canopy_increase - 10) / 10)
         )
 
     elif canopy_increase <= 30:
-
         return 1.1 + (
-            0.4 *
-            ((canopy_increase - 20) / 10)
+            0.4 * ((canopy_increase - 20) / 10)
         )
 
     else:
-
         return 1.5
 
 
@@ -249,11 +277,8 @@ def run_ecosim(trees_planted, intervention_area):
     )
 
     added_canopy = (
-        surviving_trees *
-        CANOPY_PER_TREE
+        surviving_trees * CANOPY_PER_TREE
     )
-
-    # Cannot exceed selected intervention area
 
     added_canopy = min(
         added_canopy,
@@ -274,77 +299,48 @@ def run_ecosim(trees_planted, intervention_area):
     )
 
     new_green_cover = (
-        BASE_GREEN +
-        canopy_increase
+        BASE_GREEN + canopy_increase
     )
 
-    co2_low, co2_high = (
-        calculate_co2_range(
-            surviving_trees
-        )
+    co2_low, co2_high = calculate_co2_range(
+        surviving_trees
     )
 
     return {
-
-        "trees_planted":
-            trees_planted,
-
-        "surviving_trees":
-            surviving_trees,
-
-        "intervention_area":
-            intervention_area,
-
-        "added_canopy":
-            added_canopy,
-
-        "canopy_increase":
-            canopy_increase,
-
-        "green_before":
-            BASE_GREEN,
-
-        "green_after":
-            new_green_cover,
-
-        "temperature_before":
-            BASE_TEMP,
-
-        "temperature_after":
-            predicted_temperature,
-
-        "cooling":
-            cooling,
-
-        "co2_low":
-            co2_low,
-
-        "co2_high":
-            co2_high
+        "trees_planted": trees_planted,
+        "surviving_trees": surviving_trees,
+        "intervention_area": intervention_area,
+        "added_canopy": added_canopy,
+        "canopy_increase": canopy_increase,
+        "green_before": BASE_GREEN,
+        "green_after": new_green_cover,
+        "temperature_before": BASE_TEMP,
+        "temperature_after": predicted_temperature,
+        "cooling": cooling,
+        "co2_low": co2_low,
+        "co2_high": co2_high
     }
 
 
 # =========================================================
-# HERO
+# HEADER
 # =========================================================
 
 st.markdown("""
 <div class="hero">
 
-<div class="badge">
-SDG 11 • SDG 13
-</div>
+    <div class="hero-badge">
+        🌱 CLIMATE SIMULATION • KARACHI
+    </div>
 
-<h1>🌍 EcoSim AI</h1>
+    <div class="hero-title">
+        EcoSim AI
+    </div>
 
-<p>
-Karachi Climate Simulation Lab
-</p>
-
-<p>
-Explore how urban tree planting can influence
-green cover, temperature and CO₂ removal.
-</p>
+    <div class="hero-subtitle">
+        Explore how urban tree planting could create a cooler,
+        greener and more sustainable Karachi.
+    </div>
 
 </div>
 """, unsafe_allow_html=True)
@@ -354,60 +350,44 @@ green cover, temperature and CO₂ removal.
 # SIDEBAR
 # =========================================================
 
-st.sidebar.markdown(
-    "## 🌱 Simulation Controls"
+st.sidebar.markdown("## 🌱 Simulation Controls")
+
+st.sidebar.caption(
+    "Create a tree-planting scenario and explore its estimated impact."
 )
 
-st.sidebar.write(
-    "Create your own Karachi climate scenario."
-)
+st.sidebar.markdown("---")
 
 trees = st.sidebar.slider(
-
     "🌳 Trees to Plant",
-
     min_value=10_000,
-
     max_value=2_000_000,
-
     value=500_000,
-
     step=10_000
 )
 
 area = st.sidebar.slider(
-
-    "📍 Intervention Zone (km²)",
-
+    "📍 Intervention Area (km²)",
     min_value=10,
-
     max_value=500,
-
     value=100,
-
     step=10
 )
 
 st.sidebar.markdown("---")
 
-st.sidebar.markdown(
-    "### Model Assumptions"
-)
+st.sidebar.markdown("### Model Assumptions")
 
-st.sidebar.write(
-    "🌳 Tree survival: 80%"
-)
+st.sidebar.caption("🌳 Estimated tree survival: 80%")
+st.sidebar.caption("🌿 Canopy generation: 0.00002 km²/tree")
+st.sidebar.caption("🌡️ Cooling: scenario-based")
+st.sidebar.caption("🌍 CO₂ removal: 10–25 kg/tree/year")
 
-st.sidebar.write(
-    "🌿 Canopy: 0.00002 km²/tree"
-)
+st.sidebar.markdown("---")
 
-st.sidebar.write(
-    "🌡 Cooling model: scenario-based"
-)
-
-st.sidebar.write(
-    "🌍 CO₂: 10–25 kg/tree/year"
+st.sidebar.success(
+    "Tip: Try different tree counts and intervention areas "
+    "to compare scenarios."
 )
 
 
@@ -429,20 +409,20 @@ st.markdown("""
 <div class="info-box">
 
 ⚠️ <b>Scenario Estimate:</b>
-EcoSim AI provides an exploratory climate scenario.
-The results are estimates based on model assumptions
-and should not be interpreted as guaranteed future measurements.
+EcoSim AI provides an exploratory model based on defined assumptions.
+The results are estimates and should not be interpreted as guaranteed
+future measurements.
 
 </div>
 """, unsafe_allow_html=True)
 
 
 # =========================================================
-# OVERVIEW
+# KPI CARDS
 # =========================================================
 
 st.markdown(
-    '<div class="section-title">📊 Simulation Overview</div>',
+    '<div class="section-title">📊 Simulation Results</div>',
     unsafe_allow_html=True
 )
 
@@ -452,373 +432,393 @@ col1, col2, col3, col4 = st.columns(4)
 with col1:
 
     st.markdown(f"""
-
     <div class="card">
 
-    <div class="metric-title">
-    🌳 Surviving Trees
-    </div>
+        <div class="metric-label">
+            🌳 TREES SURVIVING
+        </div>
 
-    <div class="metric-value">
-    {result["surviving_trees"]:,}
-    </div>
+        <div class="metric-value">
+            {result["surviving_trees"]:,}
+        </div>
 
-    <div class="metric-delta">
-    80% estimated survival
-    </div>
+        <div class="metric-small">
+            Estimated survival rate: 80%
+        </div>
 
     </div>
-
     """, unsafe_allow_html=True)
 
 
 with col2:
 
     st.markdown(f"""
-
     <div class="card">
 
-    <div class="metric-title">
-    🌿 Green Cover
-    </div>
+        <div class="metric-label">
+            🌿 GREEN COVER
+        </div>
 
-    <div class="metric-value">
-    {result["green_after"]:.3f}%
-    </div>
+        <div class="metric-value">
+            {result["green_after"]:.2f}%
+        </div>
 
-    <div class="metric-delta">
-    +{result["canopy_increase"]:.3f} percentage points
-    </div>
+        <div class="metric-small">
+            +{result["canopy_increase"]:.2f} percentage points
+        </div>
 
     </div>
-
     """, unsafe_allow_html=True)
 
 
 with col3:
 
     st.markdown(f"""
-
     <div class="card">
 
-    <div class="metric-title">
-    🌡️ Temperature
-    </div>
+        <div class="metric-label">
+            🌡️ TEMPERATURE
+        </div>
 
-    <div class="metric-value">
-    {result["temperature_after"]:.2f}°C
-    </div>
+        <div class="metric-value">
+            {result["temperature_after"]:.2f}°C
+        </div>
 
-    <div class="metric-delta">
-    ↓ {result["cooling"]:.2f}°C cooling
-    </div>
+        <div class="metric-small">
+            ↓ {result["cooling"]:.2f}°C estimated cooling
+        </div>
 
     </div>
-
     """, unsafe_allow_html=True)
 
 
 with col4:
 
     st.markdown(f"""
-
     <div class="card">
 
-    <div class="metric-title">
-    🌍 CO₂ Removal
-    </div>
+        <div class="metric-label">
+            🌍 CO₂ REMOVAL
+        </div>
 
-    <div class="metric-value">
-    {result["co2_low"]:,.0f}–
-    {result["co2_high"]:,.0f}
-    </div>
+        <div class="metric-value">
+            {result["co2_low"]:,.0f}–{result["co2_high"]:,.0f}
+        </div>
 
-    <div class="metric-delta">
-    tons / year
-    </div>
+        <div class="metric-small">
+            tonnes / year
+        </div>
 
     </div>
-
     """, unsafe_allow_html=True)
 
 
 # =========================================================
-# IMPACT SUMMARY
+# MAIN VISUAL AREA
 # =========================================================
 
-st.markdown(
-    '<div class="section-title">🌱 Intervention Impact</div>',
-    unsafe_allow_html=True
-)
-
-a, b = st.columns(2)
-
-
-with a:
-
-    st.markdown(
-        '<div class="card">',
-        unsafe_allow_html=True
-    )
-
-    st.markdown(
-        "### 🌿 Green Cover Transformation"
-    )
-
-    st.write(
-
-        f"""
-        **Before:** {result["green_before"]:.3f}%
-
-        **After:** {result["green_after"]:.3f}%
-
-        **Added canopy:** {result["added_canopy"]:.2f} km²
-        """
-    )
-
-    st.progress(
-        min(
-            result["canopy_increase"] / 10,
-            1.0
-        )
-    )
-
-    st.markdown(
-        '</div>',
-        unsafe_allow_html=True
-    )
-
-
-with b:
-
-    st.markdown(
-        '<div class="card">',
-        unsafe_allow_html=True
-    )
-
-    st.markdown(
-        "### 🌡️ Temperature Transformation"
-    )
-
-    st.write(
-
-        f"""
-        **Before:** {result["temperature_before"]:.2f}°C
-
-        **After:** {result["temperature_after"]:.2f}°C
-
-        **Estimated cooling:** {result["cooling"]:.2f}°C
-        """
-    )
-
-    st.markdown(
-        '</div>',
-        unsafe_allow_html=True
-    )
+left, right = st.columns([1.15, 1])
 
 
 # =========================================================
-# ANALYTICS
+# GRAPH
 # =========================================================
 
-st.markdown(
-    '<div class="section-title">📈 Climate Impact Analytics</div>',
-    unsafe_allow_html=True
-)
+with left:
 
-tab1, tab2, tab3 = st.tabs(
+    st.markdown(
+        '<div class="section-title">📈 Climate Impact</div>',
+        unsafe_allow_html=True
+    )
 
-    [
-        "🌡️ Temperature",
-        "🌿 Green Cover",
-        "🌍 CO₂"
+    fig, ax = plt.subplots(figsize=(8, 4.2))
+
+    years = [0, 5, 10, 15, 20]
+
+    temperature_values = [
+        result["temperature_before"],
+        result["temperature_before"] - result["cooling"] * 0.25,
+        result["temperature_before"] - result["cooling"] * 0.50,
+        result["temperature_before"] - result["cooling"] * 0.75,
+        result["temperature_after"]
     ]
 
-)
+    green_values = [
+        result["green_before"],
+        result["green_before"] + result["canopy_increase"] * 0.25,
+        result["green_before"] + result["canopy_increase"] * 0.50,
+        result["green_before"] + result["canopy_increase"] * 0.75,
+        result["green_after"]
+    ]
 
-
-# TEMPERATURE
-
-with tab1:
-
-    fig, ax = plt.subplots(
-        figsize=(8, 4)
+    ax.plot(
+        years,
+        temperature_values,
+        marker="o",
+        linewidth=2.5,
+        label="Temperature (°C)"
     )
 
-    ax.bar(
-
-        ["Baseline", "Scenario"],
-
-        [
-            result["temperature_before"],
-            result["temperature_after"]
-        ]
+    ax.plot(
+        years,
+        green_values,
+        marker="o",
+        linewidth=2.5,
+        label="Green Cover (%)"
     )
 
-    ax.set_ylabel(
-        "Temperature (°C)"
-    )
+    ax.set_xlabel("Years")
+    ax.set_title("Projected Environmental Change")
+    ax.grid(alpha=0.15)
+    ax.legend()
 
-    ax.set_title(
-        "Estimated Temperature Change"
-    )
-
-    ax.grid(
-        axis="y",
-        alpha=0.2
-    )
-
-    st.pyplot(fig)
-
-    plt.close(fig)
-
-
-# GREEN COVER
-
-with tab2:
-
-    fig, ax = plt.subplots(
-        figsize=(8, 4)
-    )
-
-    ax.bar(
-
-        ["Baseline", "Scenario"],
-
-        [
-            result["green_before"],
-            result["green_after"]
-        ]
-    )
-
-    ax.set_ylabel(
-        "Green Cover (%)"
-    )
-
-    ax.set_title(
-        "Estimated Green Cover Change"
-    )
-
-    ax.grid(
-        axis="y",
-        alpha=0.2
-    )
-
-    st.pyplot(fig)
-
-    plt.close(fig)
-
-
-# CO2
-
-with tab3:
-
-    fig, ax = plt.subplots(
-        figsize=(8, 4)
-    )
-
-    ax.bar(
-
-        ["Low Estimate", "High Estimate"],
-
-        [
-            result["co2_low"],
-            result["co2_high"]
-        ]
-    )
-
-    ax.set_ylabel(
-        "CO₂ Removal (tons/year)"
-    )
-
-    ax.set_title(
-        "Estimated Annual CO₂ Removal"
-    )
-
-    ax.grid(
-        axis="y",
-        alpha=0.2
-    )
-
-    st.pyplot(fig)
+    st.pyplot(fig, use_container_width=True)
 
     plt.close(fig)
 
 
 # =========================================================
-# SCENARIO COMPARISON
+# AI INSIGHTS
+# =========================================================
+
+with right:
+
+    st.markdown(
+        '<div class="section-title">🤖 AI Insights</div>',
+        unsafe_allow_html=True
+    )
+
+    if result["cooling"] >= 1.2:
+
+        assessment = (
+            "This scenario shows a strong potential cooling effect "
+            "with meaningful improvement in urban green cover."
+        )
+
+    elif result["cooling"] >= 0.6:
+
+        assessment = (
+            "This scenario shows a moderate cooling effect and "
+            "a noticeable improvement in green cover."
+        )
+
+    else:
+
+        assessment = (
+            "This scenario produces a smaller environmental effect. "
+            "Increasing tree coverage could improve the impact."
+        )
+
+    st.markdown(f"""
+    <div class="insight-card">
+
+        <div class="insight-title">
+            Scenario Assessment
+        </div>
+
+        <p class="insight-text">
+            {assessment}
+        </p>
+
+        <hr>
+
+        <b>Key Takeaways</b>
+
+        <p class="insight-text">
+            🌡️ Estimated cooling:
+            <b>{result["cooling"]:.2f}°C</b>
+            <br><br>
+
+            🌿 Green cover increase:
+            <b>{result["canopy_increase"]:.2f}%</b>
+            <br><br>
+
+            🌍 Annual CO₂ removal:
+            <b>{result["co2_low"]:,.0f}–{result["co2_high"]:,.0f} tonnes</b>
+        </p>
+
+        <hr>
+
+        <b>Recommendation</b>
+
+        <p class="insight-text">
+            Consider testing a larger intervention area or higher
+            tree count and compare the resulting environmental impact.
+        </p>
+
+    </div>
+    """, unsafe_allow_html=True)
+
+
+# =========================================================
+# SATELLITE MAP
 # =========================================================
 
 st.markdown(
-    '<div class="section-title">🌳 Planting Scenarios</div>',
+    '<div class="section-title">🛰️ Karachi Intervention Map</div>',
+    unsafe_allow_html=True
+)
+
+st.caption(
+    "Explore Karachi using satellite imagery and view the estimated intervention zone."
+)
+
+karachi_map = folium.Map(
+    location=[24.86, 67.01],
+    zoom_start=10,
+    tiles="OpenStreetMap"
+)
+
+
+# Satellite imagery
+
+folium.TileLayer(
+    tiles=(
+        "https://server.arcgisonline.com/"
+        "ArcGIS/rest/services/"
+        "World_Imagery/MapServer/tile/"
+        "{z}/{y}/{x}"
+    ),
+    attr="Esri World Imagery",
+    name="🛰️ Satellite",
+    overlay=False,
+    control=True
+).add_to(karachi_map)
+
+
+# Intervention radius
+
+radius = max(
+    1500,
+    min(
+        12000,
+        (area ** 0.5) * 1000
+    )
+)
+
+
+folium.Circle(
+    location=[24.86, 67.01],
+    radius=radius,
+    popup=f"EcoSim AI intervention zone: {area} km²",
+    tooltip="🌱 Proposed Intervention Zone",
+    color="#36A866",
+    fill=True,
+    fill_color="#36A866",
+    fill_opacity=0.20
+).add_to(karachi_map)
+
+
+# Karachi marker
+
+folium.Marker(
+    [24.86, 67.01],
+    popup="🌍 EcoSim AI — Karachi",
+    tooltip="Karachi"
+).add_to(karachi_map)
+
+
+folium.LayerControl().add_to(karachi_map)
+
+
+st_folium(
+    karachi_map,
+    width=None,
+    height=500
+)
+
+
+# =========================================================
+# BEFORE / AFTER
+# =========================================================
+
+st.markdown(
+    '<div class="section-title">🔎 Before vs After</div>',
+    unsafe_allow_html=True
+)
+
+before_col, after_col = st.columns(2)
+
+
+with before_col:
+
+    st.markdown(f"""
+    <div class="card">
+
+        <div class="metric-label">
+            CURRENT BASELINE
+        </div>
+
+        <h3>🌡️ {result["temperature_before"]:.2f}°C</h3>
+
+        <p>
+        🌿 Green Cover: <b>{result["green_before"]:.2f}%</b>
+        </p>
+
+        <p>
+        🌳 Trees Planned: <b>0</b>
+        </p>
+
+    </div>
+    """, unsafe_allow_html=True)
+
+
+with after_col:
+
+    st.markdown(f"""
+    <div class="card">
+
+        <div class="metric-label">
+            ECO SIMULATION
+        </div>
+
+        <h3>🌡️ {result["temperature_after"]:.2f}°C</h3>
+
+        <p>
+        🌿 Green Cover: <b>{result["green_after"]:.2f}%</b>
+        </p>
+
+        <p>
+        🌳 Trees Surviving: <b>{result["surviving_trees"]:,}</b>
+        </p>
+
+    </div>
+    """, unsafe_allow_html=True)
+
+
+# =========================================================
+# SIMPLE SCENARIO TABLE
+# =========================================================
+
+st.markdown(
+    '<div class="section-title">🌳 Quick Scenario Comparison</div>',
     unsafe_allow_html=True
 )
 
 scenario_trees = [
-
     100_000,
-
     250_000,
-
     500_000,
-
     1_000_000
-
 ]
 
 scenario_results = []
 
-
 for number in scenario_trees:
 
-    x = run_ecosim(
-        number,
-        area
-    )
+    x = run_ecosim(number, area)
 
     scenario_results.append({
-
-        "Trees Planted":
-            number,
-
-        "Surviving Trees":
-            x["surviving_trees"],
-
-        "Added Canopy (km²)":
-            round(
-                x["added_canopy"],
-                2
-            ),
-
-        "Cooling (°C)":
-            round(
-                x["cooling"],
-                2
-            ),
-
-        "Temperature (°C)":
-            round(
-                x["temperature_after"],
-                2
-            ),
-
-        "CO₂ Low":
-            round(
-                x["co2_low"]
-            ),
-
-        "CO₂ High":
-            round(
-                x["co2_high"]
-            )
-
+        "Trees Planted": f"{number:,}",
+        "Surviving": f'{x["surviving_trees"]:,}',
+        "Cooling": f'{x["cooling"]:.2f}°C',
+        "CO₂ Removal": f'{x["co2_low"]:,.0f}–{x["co2_high"]:,.0f} t/yr'
     })
 
 
 scenario_df = pd.DataFrame(
     scenario_results
 )
-
 
 st.dataframe(
     scenario_df,
@@ -828,257 +828,24 @@ st.dataframe(
 
 
 # =========================================================
-# SCENARIO GRAPH
-# =========================================================
-
-fig, ax = plt.subplots(
-    figsize=(9, 4)
-)
-
-ax.plot(
-
-    scenario_df["Trees Planted"],
-
-    scenario_df["Cooling (°C)"],
-
-    marker="o"
-)
-
-ax.set_xlabel(
-    "Trees Planted"
-)
-
-ax.set_ylabel(
-    "Estimated Cooling (°C)"
-)
-
-ax.set_title(
-    "Trees vs Estimated Cooling"
-)
-
-ax.grid(
-    alpha=0.2
-)
-
-st.pyplot(fig)
-
-plt.close(fig)
-
-
-# =========================================================
-# MAP
-# =========================================================
-
-st.markdown(
-    '<div class="section-title">🗺️ Karachi Intervention Map</div>',
-    unsafe_allow_html=True
-)
-
-st.write(
-    "Use the layer control to switch between the standard map and satellite imagery."
-)
-
-
-karachi_map = folium.Map(
-
-    location=[
-        24.86,
-        67.01
-    ],
-
-    zoom_start=10,
-
-    tiles="OpenStreetMap"
-)
-
-
-# SATELLITE IMAGERY
-
-folium.TileLayer(
-
-    tiles=
-    "https://server.arcgisonline.com/"
-    "ArcGIS/rest/services/"
-    "World_Imagery/MapServer/tile/"
-    "{z}/{y}/{x}",
-
-    attr="Esri World Imagery",
-
-    name="🛰️ Satellite Imagery",
-
-    overlay=False,
-
-    control=True
-
-).add_to(
-    karachi_map
-)
-
-
-# INTERVENTION ZONE
-
-radius = max(
-
-    1500,
-
-    min(
-
-        12000,
-
-        (area ** 0.5) * 1000
-
-    )
-
-)
-
-
-folium.Circle(
-
-    location=[
-        24.86,
-        67.01
-    ],
-
-    radius=radius,
-
-    popup=
-    f"EcoSim AI intervention zone: {area} km²",
-
-    tooltip=
-    "EcoSim AI Intervention Zone",
-
-    fill=True,
-
-    fill_opacity=0.18
-
-).add_to(
-    karachi_map
-)
-
-
-# KARACHI MARKER
-
-folium.Marker(
-
-    [
-        24.86,
-        67.01
-    ],
-
-    popup=
-    "🌍 EcoSim AI — Karachi",
-
-    tooltip=
-    "Karachi"
-
-).add_to(
-    karachi_map
-)
-
-
-folium.LayerControl().add_to(
-    karachi_map
-)
-
-
-st_folium(
-
-    karachi_map,
-
-    width=None,
-
-    height=520
-
-)
-
-
-# =========================================================
-# KARACHI BASELINE
-# =========================================================
-
-st.markdown(
-    '<div class="section-title">🏙️ Karachi Baseline Data</div>',
-    unsafe_allow_html=True
-)
-
-
-baseline_df = pd.DataFrame({
-
-    "Indicator":
-
-    [
-
-        "City Area",
-
-        "Buildings",
-
-        "Parks",
-
-        "Park Area",
-
-        "Water Bodies",
-
-        "Water Area",
-
-        "Current Green Cover"
-
-    ],
-
-    "Value":
-
-    [
-
-        f"{KARACHI_AREA:,.2f} km²",
-
-        f"{BUILDINGS:,}",
-
-        f"{PARKS:,}",
-
-        f"{PARK_AREA:.2f} km²",
-
-        f"{WATER_BODIES:,}",
-
-        f"{WATER_AREA:.2f} km²",
-
-        f"{BASE_GREEN:.3f}%"
-
-    ]
-
-})
-
-
-st.dataframe(
-
-    baseline_df,
-
-    use_container_width=True,
-
-    hide_index=True
-
-)
-
-
-# =========================================================
 # FOOTER
 # =========================================================
 
-st.markdown(
-    """
-    <div class="footer">
+st.markdown("""
+<div class="footer">
 
-    🌍 <b>EcoSim AI</b>
-
+    🌱 <strong>EcoSim AI</strong>
     <br>
-
     Karachi Climate Simulation Lab
-
-    <br>
+    <br><br>
 
     SDG 11 • Sustainable Cities & Communities
     &nbsp; | &nbsp;
     SDG 13 • Climate Action
 
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+    <br><br>
+
+    <strong>Made by Mukarram</strong> 💚
+
+</div>
+""", unsafe_allow_html=True)
