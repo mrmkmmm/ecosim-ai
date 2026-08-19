@@ -28,7 +28,7 @@ html, body, [class*="css"] {
 }
 
 .stApp {
-    background: #F6FAF7;
+    background: linear-gradient(180deg, #F0FAF3 0%, #F6FAF7 40%, #F3F9FB 100%);
     color: #18372A;
 }
 
@@ -41,47 +41,57 @@ html, body, [class*="css"] {
 /* Top bar with badges */
 .topbar {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: 22px;
+    text-align: center;
+    gap: 14px;
+    margin-bottom: 26px;
+    padding: 26px 20px 22px 20px;
+    background: linear-gradient(135deg, #E4F7EA 0%, #EAF7F4 55%, #E9F1FC 100%);
+    border: 1px solid #DCEEE1;
+    border-radius: 22px;
+    box-shadow: 0 8px 26px rgba(25, 120, 80, 0.07);
 }
 
 .eco-title-row {
     display: flex;
     align-items: baseline;
+    justify-content: center;
     gap: 8px;
 }
 
 .eco-title {
-    font-size: 32px;
+    font-size: 38px;
     line-height: 1.1;
     font-weight: 800;
-    color: #123D2C;
+    background: linear-gradient(90deg, #0F7A44, #16A085);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     margin: 0;
 }
 
 .eco-subtitle {
-    color: #5A7167;
-    font-size: 14px;
-    margin-top: 4px;
+    color: #4E6A5D;
+    font-size: 15px;
+    margin-top: 2px;
 }
 
 .badge-row {
     display: flex;
-    gap: 10px;
+    gap: 12px;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .eco-pill {
     background: #FFFFFF;
     border: 1px solid #E1EAE4;
     border-radius: 12px;
-    padding: 9px 14px;
+    padding: 9px 16px;
     font-size: 12.5px;
     color: #2A4137;
-    box-shadow: 0 3px 10px rgba(25,70,50,0.04);
+    box-shadow: 0 3px 10px rgba(25,70,50,0.06);
     display: flex;
     align-items: center;
     gap: 8px;
@@ -111,22 +121,28 @@ html, body, [class*="css"] {
 /* Metric cards */
 .eco-card {
     background: #FFFFFF;
-    border: 1px solid #DFEAE3;
+    border: 1px solid #E7EFE9;
     border-radius: 16px;
     padding: 18px;
     min-height: 108px;
-    box-shadow: 0 5px 16px rgba(25, 70, 50, 0.045);
+    box-shadow: 0 6px 18px rgba(25, 70, 50, 0.06);
+    transition: transform 0.15s ease;
+}
+
+.eco-card:hover {
+    transform: translateY(-2px);
 }
 
 .card-icon {
-    width: 38px;
-    height: 38px;
-    border-radius: 10px;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 18px;
-    margin-bottom: 8px;
+    font-size: 19px;
+    margin-bottom: 9px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
 .card-label {
@@ -136,8 +152,7 @@ html, body, [class*="css"] {
 }
 
 .card-value {
-    color: #17392C;
-    font-size: 25px;
+    font-size: 26px;
     font-weight: 800;
     margin-top: 3px;
 }
@@ -148,18 +163,23 @@ html, body, [class*="css"] {
     margin-top: 3px;
 }
 
-.green-icon  { background: #E4F5E8; color: #1E9E52; }
-.leaf-icon   { background: #E4F5E8; color: #1E9E52; }
-.temp-icon   { background: #E7F1FB; color: #2E7BD6; }
-.co2-icon    { background: #F1EBFB; color: #7C4FD1; }
+.green-icon  { background: linear-gradient(135deg,#34D07E,#0F9D58); color: #fff; }
+.leaf-icon   { background: linear-gradient(135deg,#5FE0A0,#16A085); color: #fff; }
+.temp-icon   { background: linear-gradient(135deg,#5FA8FF,#2E6BD6); color: #fff; }
+.co2-icon    { background: linear-gradient(135deg,#B78CF2,#7C4FD1); color: #fff; }
+
+.eco-card:nth-of-type(1) .card-value, .card-value.v-green { color: #0F9D58; }
+.card-value.v-temp { color: #2E6BD6; }
+.card-value.v-co2  { color: #7C4FD1; }
 
 /* Insight panel */
 .insight {
-    background: #EEF7F0;
+    background: linear-gradient(160deg, #EAF9EE 0%, #EFF6F9 100%);
     border: 1px solid #D7ECDD;
     border-radius: 16px;
     padding: 20px;
     height: 100%;
+    box-shadow: 0 6px 18px rgba(25,70,50,0.05);
 }
 
 .insight h4 {
@@ -393,7 +413,7 @@ with c1:
     <div class="eco-card">
         <div class="card-icon green-icon">🌳</div>
         <div class="card-label">Trees Surviving</div>
-        <div class="card-value">{result["surviving"]:,}</div>
+        <div class="card-value v-green">{result["surviving"]:,}</div>
         <div class="card-note">{result["survival_rate"]*100:.0f}% Survival Rate</div>
     </div>
     """), unsafe_allow_html=True)
@@ -403,7 +423,7 @@ with c2:
     <div class="eco-card">
         <div class="card-icon leaf-icon">🌿</div>
         <div class="card-label">Green Cover</div>
-        <div class="card-value">{result["green_after"]:.2f}%</div>
+        <div class="card-value v-green">{result["green_after"]:.2f}%</div>
         <div class="card-note">From {result["green_before"]:.1f}%</div>
     </div>
     """), unsafe_allow_html=True)
@@ -413,7 +433,7 @@ with c3:
     <div class="eco-card">
         <div class="card-icon temp-icon">🌡️</div>
         <div class="card-label">Temperature Reduction</div>
-        <div class="card-value">-{result["cooling"]:.2f} °C</div>
+        <div class="card-value v-temp">-{result["cooling"]:.2f} °C</div>
         <div class="card-note">From {result["temp_before"]:.2f} °C</div>
     </div>
     """), unsafe_allow_html=True)
@@ -424,7 +444,7 @@ with c4:
     <div class="eco-card">
         <div class="card-icon co2-icon">☁️</div>
         <div class="card-label">CO₂ Removed (Annual)</div>
-        <div class="card-value">{result["co2_mid"]:,.0f} tCO₂e</div>
+        <div class="card-value v-co2">{result["co2_mid"]:,.0f} tCO₂e</div>
         <div class="card-note">Equivalent to {cars_eq:,} cars off road</div>
     </div>
     """), unsafe_allow_html=True)
@@ -434,7 +454,7 @@ st.markdown("<br>", unsafe_allow_html=True)
 # =========================================================
 # CHART + MAP + AI INSIGHTS
 # =========================================================
-left, mid, right = st.columns([1.05, 1.05, 0.75])
+left, mid, right = st.columns([0.9, 1.35, 0.75])
 
 with left:
     st.markdown('<div class="section-title">Impact Over Time</div>', unsafe_allow_html=True)
@@ -519,7 +539,7 @@ with mid:
 
     folium.LayerControl().add_to(karachi_map)
 
-    st_folium(karachi_map, width=None, height=380)
+    st_folium(karachi_map, width=None, height=470)
     st.caption("🟩 Intervention Area   ⬛ Urban Area   🟦 Water Bodies")
 
 with right:
