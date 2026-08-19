@@ -28,7 +28,7 @@ html, body, [class*="css"] {
 }
 
 .stApp {
-    background: linear-gradient(180deg, #F0FAF3 0%, #F6FAF7 40%, #F3F9FB 100%);
+    background: linear-gradient(180deg, #EFFAF3 0%, #F5FAF6 45%, #F2F8FA 100%);
     color: #18372A;
 }
 
@@ -163,14 +163,14 @@ html, body, [class*="css"] {
     margin-top: 3px;
 }
 
-.green-icon  { background: linear-gradient(135deg,#34D07E,#0F9D58); color: #fff; }
-.leaf-icon   { background: linear-gradient(135deg,#5FE0A0,#16A085); color: #fff; }
-.temp-icon   { background: linear-gradient(135deg,#5FA8FF,#2E6BD6); color: #fff; }
-.co2-icon    { background: linear-gradient(135deg,#B78CF2,#7C4FD1); color: #fff; }
+.green-icon  { background: linear-gradient(135deg,#3FCB80,#0E8F4F); color: #fff; }
+.leaf-icon   { background: linear-gradient(135deg,#4FCC9A,#12A17E); color: #fff; }
+.temp-icon   { background: linear-gradient(135deg,#5B9EE8,#3868C7); color: #fff; }
+.co2-icon    { background: linear-gradient(135deg,#A17FE0,#6E4DBF); color: #fff; }
 
-.eco-card:nth-of-type(1) .card-value, .card-value.v-green { color: #0F9D58; }
-.card-value.v-temp { color: #2E6BD6; }
-.card-value.v-co2  { color: #7C4FD1; }
+.eco-card:nth-of-type(1) .card-value, .card-value.v-green { color: #0E8F4F; }
+.card-value.v-temp { color: #3868C7; }
+.card-value.v-co2  { color: #6E4DBF; }
 
 /* Insight panel */
 .insight {
@@ -391,7 +391,7 @@ st.markdown(dedent(f"""
     <div>
         <div class="eco-title-row">
             <span style="font-size:26px;">🌱</span>
-            <span class="eco-title">{scenario_name if scenario_name else "EcoSim AI"}</span>
+            <span class="eco-title">EcoSim AI</span>
         </div>
         <div class="eco-subtitle">Simulate. Analyze. Act for a Cooler, Greener Karachi.</div>
     </div>
@@ -626,7 +626,7 @@ with b3:
     <div class="plain-card">
         <p style="color:#4C5F55; font-size:13px; line-height:1.6;">
         Your planted trees will continue to grow and create a lasting
-        positive impact on {scenario_name if scenario_name else "your city"}'s
+        positive impact on Karachi's
         climate, air quality, and biodiversity.
         </p>
     </div>
