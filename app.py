@@ -571,68 +571,163 @@ st.markdown("<br>", unsafe_allow_html=True)
 # =========================================================
 # BEFORE VS AFTER / IMPACT SUMMARY / PROJECTED IMPACT
 # =========================================================
-b1, b2, b3 = st.columns(3)
+# ================================
+# BEFORE VS AFTER - 20 YEARS
+# ================================
 
-with b1:
-    st.markdown('<div class="section-title">Before vs After (20 Years)</div>', unsafe_allow_html=True)
-    fig, ax = plt.subplots(figsize=(4.6, 3.4))
-    labels = ["Temperature (°C)", "Green Cover (%)", "CO₂ Removed (t/yr)"]
-    before_vals = [result["temp_before"], result["green_before"], 0]
-    after_vals = [result["temp_after"], result["green_after"], result["co2_mid"]]
-    y = range(len(labels))
-    ax.barh([i + 0.18 for i in y], before_vals, height=0.32, color="#C9D3CD", label="Before")
-    ax.barh([i - 0.18 for i in y], after_vals, height=0.32, color="#22A15A", label="After")
-    ax.set_yticks(list(y))
-    ax.set_yticklabels(labels, fontsize=8.5)
-    ax.legend(fontsize=8, frameon=False)
-    ax.tick_params(labelsize=8)
-    fig.tight_layout()
-    st.pyplot(fig, use_container_width=True)
-    plt.close(fig)
+import matplotlib.pyplot as plt
+import numpy as np
 
-with b2:
-    st.markdown('<div class="section-title">Impact Summary</div>', unsafe_allow_html=True)
-    s1, s2 = st.columns(2)
-    with s1:
-        st.markdown(dedent(f"""
-        <div class="eco-card" style="margin-bottom:10px;">
-            <div class="card-icon temp-icon">🌡️</div>
-            <div class="card-value" style="font-size:20px;">-{result["cooling"]:.2f} °C</div>
-            <div class="card-note">Temperature Reduction</div>
-        </div>
-        <div class="eco-card">
-            <div class="card-icon co2-icon">☁️</div>
-            <div class="card-value" style="font-size:20px;">{result["co2_mid"]:,.0f} tCO₂e</div>
-            <div class="card-note">CO₂ Removed (Annual)</div>
-        </div>
-        """), unsafe_allow_html=True)
-    with s2:
-        st.markdown(dedent(f"""
-        <div class="eco-card" style="margin-bottom:10px;">
-            <div class="card-icon leaf-icon">🌿</div>
-            <div class="card-value" style="font-size:20px;">+{result["canopy_increase"]:.2f}%</div>
-            <div class="card-note">Green Cover Increase</div>
-        </div>
-        <div class="eco-card">
-            <div class="card-icon green-icon">🌳</div>
-            <div class="card-value" style="font-size:20px;">{result["surviving"]:,}</div>
-            <div class="card-note">Trees Surviving</div>
-        </div>
-        """), unsafe_allow_html=True)
+# Current values
+baseline_temp = 41.75
+estimated_temp = 41.11
 
-with b3:
-    st.markdown('<div class="section-title">Projected Impact (20 Years)</div>', unsafe_allow_html=True)
-    st.markdown(dedent(f"""
-    <div class="plain-card">
-        <p style="color:#4C5F55; font-size:13px; line-height:1.6;">
-        Your planted trees will continue to grow and create a lasting
-        positive impact on Karachi's
-        climate, air quality, and biodiversity.
-        </p>
-    </div>
-    """), unsafe_allow_html=True)
+baseline_green = 0.155
+estimated_green = 0.155 + 8.0 / 5841.13 * 100
 
-st.markdown("<br>", unsafe_allow_html=True)
+baseline_co2 = 0
+estimated_co2_low = 4000
+estimated_co2_high = 10000
+
+# Use midpoint for the displayed CO2 estimate
+estimated_co2 = (estimated_co2_low + estimated_co2_high) / 2
+
+# Data
+metrics = [
+    "Temperature (°C)",
+    "Green Cover (%)",
+    "CO₂ Removal (t/year)"
+]
+
+before = [
+    baseline_temp,
+    baseline_green,
+    baseline_co2
+]
+
+after = [
+    estimated_temp,
+    estimated_green,
+    estimated_co2
+]
+
+# Create separate subplots
+fig, axes = plt.subplots(1, 3, figsize=(14, 4.8))
+
+# Colors
+before_color = "#B7C8BF"   # light grey-green
+after_color = "#178A4B"    # dark green
+
+# ---------------- Temperature ----------------
+axes[0].barh(
+    ["Before", "After"],
+    [baseline_temp, estimated_temp],
+    color=[before_color, after_color],
+    height=0.55
+)
+
+axes[0].set_title(
+    "Temperature",
+    fontsize=16,
+    fontweight="bold",
+    color="#14522F"
+)
+
+axes[0].set_xlabel("°C")
+axes[0].grid(axis="x", alpha=0.2)
+
+axes[0].text(
+    baseline_temp + 0.05, 0,
+    f"{baseline_temp:.2f}°C",
+    va="center",
+    fontsize=11
+)
+
+axes[0].text(
+    estimated_temp + 0.05, 1,
+    f"{estimated_temp:.2f}°C",
+    va="center",
+    fontsize=11
+)
+
+# ---------------- Green Cover ----------------
+axes[1].barh(
+    ["Before", "After"],
+    [baseline_green, estimated_green],
+    color=[before_color, after_color],
+    height=0.55
+)
+
+axes[1].set_title(
+    "Green Cover",
+    fontsize=16,
+    fontweight="bold",
+    color="#14522F"
+)
+
+axes[1].set_xlabel("%")
+axes[1].grid(axis="x", alpha=0.2)
+
+axes[1].text(
+    baseline_green + 0.01, 0,
+    f"{baseline_green:.3f}%",
+    va="center",
+    fontsize=11
+)
+
+axes[1].text(
+    estimated_green + 0.01, 1,
+    f"{estimated_green:.3f}%",
+    va="center",
+    fontsize=11
+)
+
+# ---------------- CO2 ----------------
+axes[2].barh(
+    ["Before", "After"],
+    [baseline_co2, estimated_co2],
+    color=[before_color, after_color],
+    height=0.55
+)
+
+axes[2].set_title(
+    "CO₂ Removal",
+    fontsize=16,
+    fontweight="bold",
+    color="#14522F"
+)
+
+axes[2].set_xlabel("tons/year")
+axes[2].grid(axis="x", alpha=0.2)
+
+axes[2].text(
+    estimated_co2 + 150,
+    1,
+    f"{estimated_co2:,.0f} t/yr",
+    va="center",
+    fontsize=11
+)
+
+# Overall title
+fig.suptitle(
+    "EcoSim AI — Before vs After (20 Years)",
+    fontsize=22,
+    fontweight="bold",
+    color="#0F4D2E",
+    y=1.05
+)
+
+plt.tight_layout()
+
+# Save
+plt.savefig(
+    "before_vs_after_20_years.png",
+    dpi=250,
+    bbox_inches="tight",
+    facecolor="#EAF6FB"
+)
+
+plt.show()
 
 # =========================================================
 # QUICK COMPARISON
