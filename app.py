@@ -680,6 +680,6 @@ st.markdown(dedent("""
     🌱 <b>EcoSim AI</b> • Karachi Climate Simulation Lab<br><br>
     SDG 11 • Sustainable Cities & Communities &nbsp; | &nbsp; SDG 13 • Climate Action
     <br><br>
-    <b>Made by Mukarram</b> 💚
+    <b>Made by Mukarram and Minhaj </b> 💚
 </div>
 """), unsafe_allow_html=True)
